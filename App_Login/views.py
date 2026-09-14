@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 def signup(request):
     form = UserCreationForm()
     registered = False
@@ -28,3 +29,8 @@ def login_page(request):
                 login(request, user)
                 return HttpResponseRedirect(reverse('index'))
     return render(request, 'App_Login/login.html',context={'form':form})
+
+@login_required
+def logout_user(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('index'))
