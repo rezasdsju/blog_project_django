@@ -29,12 +29,14 @@ SECRET_KEY = 'django-insecure-$sk&ehf$fql60#39b$b6#m2ld0p+jx=5tg@r6!y8(koyl@%@)l
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'blog-project-django-tzn4.onrender.com',
-    '127.0.0.1',
+    'blog.satbeta.top',
     'localhost',
+    '127.0.0.1',
 ]
 
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://blog.satbeta.top',
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -129,8 +131,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
+# STATIC_URL = 'static/'
+# STATICFILES_DIRS = [STATIC_DIR,]
+
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [STATIC_DIR,]
+STATICFILES_DIRS = [STATIC_DIR]
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
