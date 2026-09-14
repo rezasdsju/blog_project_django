@@ -6,6 +6,7 @@ A Django-based blog application where users can create, read, edit, like, dislik
 
 * User authentication
 * Read blog posts
+* Search blog posts
 * Create and publish blog posts
 * Edit blog posts
 * Like and dislike blog posts
