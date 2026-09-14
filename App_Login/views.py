@@ -4,7 +4,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from App_Login.forms import SignUpForm
+from App_Login.forms import SignUpForm, UserProfileChange
 def signup(request):
     form = SignUpForm()
     registered = False
@@ -43,3 +43,16 @@ def logout_user(request):
 @login_required
 def profile(request):
     return render(request, 'App_Login/profile.html', context={})
+
+
+@login_required
+def user_change(request):
+    current_user = request.user
+    form = UserProfileChange(instance=current_user)
+    if request.method == 'POST':
+        form = UserProfileChange(request.POST, instance = current_user)
+        if form.is_valid():
+            form.save()
+            form = UserProfileChange(instance = current_user)
+            return HttpResponseRedirect(reverse('App_Login:profile'))
+    return render(request,'App_Login/change_profile.html', context={'form':form})
