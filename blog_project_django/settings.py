@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'App_Blog',
     'crispy_forms',
     'crispy_bootstrap5',
+    'django_cleanup',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
