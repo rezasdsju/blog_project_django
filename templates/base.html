@@ -21,7 +21,9 @@
           <a class="nav-link active" aria-current="page" href="{% url 'index' %}"><img src="/media/blog_images/blog.png" alt="" height='20' width='20' class='rounded-circle'></a>
           
         </li>
-
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'index' %}">Home</a>
+        </li>
         {% if user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'App_Blog:create_blog' %}">Write Blog</a>
@@ -61,8 +63,8 @@
         {% endif %}
 
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <form class="d-flex" method='GET'>
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name='search'>
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>

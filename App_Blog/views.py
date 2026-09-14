@@ -33,8 +33,19 @@ class CreateBlog(LoginRequiredMixin,CreateView):
 class BlogList(ListView):
     context_object_name = 'blogs'
     model = Blog
+
     template_name = 'App_Blog/blog_list.html'
     # queryset = Blog.objects.order_by('-publish_date')
+    def get_queryset(self):
+        keyword = self.request.GET.get('search')
+        if keyword:
+            return Blog.objects.filter(
+                blog_title__icontains=keyword
+            )
+        return Blog.objects.all()
+    
+        
+        
     
     
     
